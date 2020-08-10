@@ -1,100 +1,86 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { signInWithGoogle } from "../Firebase/Firebase";
+import { signInWithGoogle, signInWithGithub, auth } from "../Firebase/Firebase";
+import { GoogleOutlined } from "@ant-design/icons";
+
+import firebase from "../Firebase/Firebase";
 
 function Home() {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  async function SignIn() {
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return (
-    <div className="grid grid-cols-2  divide-red-900  min-h-0 mt-48 w-4/5 mx-auto">
-      <div className="flex justify-center  bg-white shadow-xl">
-        <form class=" rounded px-8 pt-6 pb-8  w-full">
-          <div class="mb-4">
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="username"
+    <div className=" flex flex-col items-center justify-center font">
+      <form className=" shadow-xl rounded-lg px-8 pt-6 pb-8  ">
+        <div className="flex flex-col items-center justify-center text-black  ">
+          <p className="font-bold pb-4">Already have an account? </p>
+          <p className="pb-6">Sign in with email and password </p>
+        </div>
+        <div className="mb-10">
+          <label className="block text-sm font-bold mb-2">Email</label>
+          <input
+            className="shadow-md appearance-none border text-black bg-white rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+            id="Email"
+            type="text"
+            placeholder="Email"
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
+        <div className="mb-10">
+          <label className="block text-sm font-bold mb-2">Password</label>
+          <input
+            className="shadow-md appearance-none border text-black bg-white rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
+            id="password"
+            type="password"
+            placeholder="******************"
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        <div className="flex flex-col items-center justify-center ">
+          <Link
+            className=" text-white py-2 px-4 rounded focus:outline-none shadow-md mb-6 Link"
+            type="button"
+            onClick={SignIn}
+            to="/Blogger"
+          >
+            Sign In
+          </Link>
+
+          <p className="mb-6">or</p>
+          <div className="flex justify-evenly  w-full text-white mb-6   border-b-2 border-gray-600 pb-6  ">
+            <Link
+              to="/Blogger"
+              onClick={signInWithGithub}
+              className=" py-2 px-4 rounded Link shadow-md"
             >
-              Username
-            </label>
-            <input
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
-              type="text"
-              placeholder="Username"
-            />
-          </div>
-          <div class="mb-6">
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="password"
+              Github
+            </Link>
+            <Link
+              to="/Blogger"
+              onClick={signInWithGoogle}
+              className=" py-2 px-4 rounded Link shadow-md"
             >
-              Password
-            </label>
-            <input
-              class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="password"
-              type="password"
-              placeholder="******************"
-            />
+              Google
+            </Link>
           </div>
-          <div class="flex items-center justify-center ">
-            <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+          <div className=" h-20 flex flex-col items-center justify-center">
+            <p>Do not have an account?</p>
+            <Link
+              to="/SignUp"
+              className=" mt-2 py-2 px-4 text-white rounded Link shadow-md"
             >
               Sign Up
-            </button>
+            </Link>
           </div>
-        </form>
-      </div>
-      <div className="flex  flex-col justify-center items-center ml-4">
-        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full">
-          <div class="mb-4">
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="username"
-            >
-              Username
-            </label>
-            <input
-              class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
-              type="text"
-              placeholder="Username"
-            />
-          </div>
-          <div class="mb-6">
-            <label
-              class="block text-gray-700 text-sm font-bold mb-2"
-              for="password"
-            >
-              Password
-            </label>
-            <input
-              class="shadow appearance-none border  rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-              id="password"
-              type="password"
-              placeholder="******************"
-            />
-          </div>
-          <div class="flex flex-col items-center justify-center ">
-            <button
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-6"
-              type="button"
-            >
-              Sign In
-            </button>
-
-            <p className="mb-6">or</p>
-            <div className="flex justify-evenly  w-full">
-              <Link to="/Blogger">Twitter</Link>
-              <Link to="/Blogger">Facebook</Link>
-              <Link to="/Blogger">Github</Link>
-              <Link to="/Blogger" onClick={signInWithGoogle}>
-                google
-              </Link>
-            </div>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 }

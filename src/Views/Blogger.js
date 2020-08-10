@@ -1,42 +1,45 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { signOut } from "../Firebase/Firebase";
 
 function Blogger({ currentUser }) {
-  if(currentUser)
-  {
-  return (
-    <div className="flex flex-col items-center mt-4 ">
-      <div className="mx-auto w-1/2 h-1/3  mb-1 rounded overflow-hidden shadow-lg">
-        <div className=" flex flex-row justify-center">
-          <div className="w-1/2 h-30 ">
-            <img
-              className="h-30 bg-cover bg-center rounded-full pt-2"
-              src={currentUser.photoURL}
-              alt="Sunset in the mountains"
-            />
+  if (currentUser) {
+    var moment = require('moment'); // require
+
+     
+    return (
+      <div className="flex flex-col items-center mt-4 sm:auto md:w-auto lg:w-auto">
+        <div className=" bg-white mx-auto  mb-1 rounded  shadow-lg">
+          <div className=" flex flex-row justify-center">
+            <div className="w-1/2 h-30 "></div>
           </div>
-        </div>
-        <div className="px-6 py-4">
-          <div className="font-bold text-lg mb-2 flex justify-center text-teal-400 ">
-            {currentUser.displayName}
+          <div className="px-6 py-4 ">
+            <div className="  mb-2  flex justify-start text-black ">
+              Name: {currentUser.displayName}
+            </div>
+            <div className="  mb-2 flex justify-start text-black ">
+              Email: {currentUser.email}
+            </div>
+
+            <div className="  mb-2  flex justify-start text-black ">
+              Joined: {moment(currentUser.createdAt.toDate()).calendar()}
+            </div>
           </div>
-        </div>
-        <div className="px-6 py-4  flex justify-evenly">
-          <span className="inline-block bg-white rounded-full px-3 py-1 text-sm font-semibold text-teal-400 shadow-md ">
-            #React
-          </span>
-          <span className="inline-block bg-white rounded-full px-3 py-1 text-sm font-semibold text-teal-400 shadow-md">
-            #JavaScript
-          </span>
-          <span className="inline-block bg-white rounded-full px-3 py-1 text-sm font-semibold text-teal-400 shadow-md">
-            #CSS
-          </span>
+          <div className="px-6 py-4  flex justify-evenly">
+            <Link
+              className=" text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline Link"
+              type="button"
+              onClick={signOut}
+              to="/"
+            >
+              Sign Out
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-  );
-  }
-  else{
-    return null
+    );
+  } else {
+    return null;
   }
 }
 
@@ -46,4 +49,9 @@ function Blogger({ currentUser }) {
 //     // Create your blog //{" "}
 //   </Link>
 // </div>;
+// <img
+//   className="h-30 bg-cover bg-center rounded-full pt-2"
+//   src={currentUser.photoURL}
+//   alt="Sunset in the mountains"
+// />;
 export default Blogger;

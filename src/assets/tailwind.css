@@ -1,4 +1,26 @@
 @import "tailwindcss/base";
+body {
+  background-color: #006EEF;
+}
+form {
+  background-color: white;
+}
+
+input {
+  background-color:#F4F4F4;
+  color:black;
+}
+
+input::placeholder {
+  color: #C8C8C8
+}
+
+
+.Link, button{
+    background-color: #006EEF;
+  
+    cursor: pointer;
+}
 
 @import "tailwindcss/components";
 
