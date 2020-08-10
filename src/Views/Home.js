@@ -69,10 +69,7 @@ function Home() {
           </div>
           <div className=" h-20 flex flex-col items-center justify-center">
             <p>Do not have an account?</p>
-            <Link
-              to="/SignUp"
-              className=" mt-2 py-2 px-4 text-white rounded Link shadow-md"
-            >
+            <Link to="/SignUp" className=" py-2 px-4 rounded Link shadow-md">
               Sign Up
             </Link>
           </div>
