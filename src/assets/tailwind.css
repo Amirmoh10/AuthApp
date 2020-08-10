@@ -18,7 +18,7 @@ input::placeholder {
 
 .Link, button{
     background-color: #006EEF;
-  
+     color:white;
     cursor: pointer;
 }
 

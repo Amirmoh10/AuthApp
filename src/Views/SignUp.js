@@ -59,7 +59,7 @@ function SignUp() {
         </div>
         <div className="flex items-center justify-center ">
           <Link
-            className=" py-2 px-4 rounded Link shadow-md"
+            className=" py-2 px-4 rounded Link shadow-md "
             type="button"
             onClick={SignUp}
             to="/Blogger"
