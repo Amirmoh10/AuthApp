@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { signInWithGoogle, signInWithGithub, auth } from "../Firebase/Firebase";
-import { GoogleOutlined } from "@ant-design/icons";
-
-import firebase from "../Firebase/Firebase";
 
 function Home() {
   const [email, setEmail] = React.useState("");

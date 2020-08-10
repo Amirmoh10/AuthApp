@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { auth, createUserProfileDocument } from "../Firebase/Firebase";
-import firebase from "../Firebase/Firebase";
 
 function SignUp() {
   const [displayName, setDisplayName] = React.useState("");
