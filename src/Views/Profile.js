@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { signOut } from "../Firebase/Firebase";
 
-function Blogger({ currentUser }) {
+function Profile({ currentUser }) {
   if (currentUser) {
-    var moment = require('moment'); // require
+    var moment = require("moment"); // require
 
-     
     return (
       <div className="flex flex-col items-center mt-4 sm:auto md:w-auto lg:w-auto">
         <div className=" bg-white mx-auto  mb-1 rounded  shadow-lg">
@@ -43,15 +42,4 @@ function Blogger({ currentUser }) {
   }
 }
 
-// <div className=" w-1/2 mt-1 flex justify-center h-12 mx-auto bg-teal-400">
-//   //{" "}
-//   <Link className="text-white text-2xl  " to="/PostRoom">
-//     // Create your blog //{" "}
-//   </Link>
-// </div>;
-// <img
-//   className="h-30 bg-cover bg-center rounded-full pt-2"
-//   src={currentUser.photoURL}
-//   alt="Sunset in the mountains"
-// />;
-export default Blogger;
+export default Profile;

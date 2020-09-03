@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./Views/Home";
-import Blogger from "./Views/Blogger";
+import Profile from "./Views/Profile";
 import { auth, createUserProfileDocument } from "./Firebase/Firebase";
 import SignUp from "./Views/SignUp";
 // import PostRoom from "./Views/PostRoom";
@@ -33,8 +33,8 @@ function App() {
           <Route exact path="/SignUp" component={SignUp} />
           <Route
             exact
-            path="/Blogger"
-            component={() => <Blogger currentUser={currentUser} />}
+            path="/Profile"
+            component={() => <Profile currentUser={currentUser} />}
           />
         </Switch>
       </Router>
@@ -42,4 +42,3 @@ function App() {
   );
 }
 export default App;
-// <Route exact path="/PostRoom" component={PostRoom} />

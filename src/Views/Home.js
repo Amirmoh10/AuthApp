@@ -45,7 +45,7 @@ function Home() {
             className=" text-white py-2 px-4 rounded focus:outline-none shadow-md mb-6 Link"
             type="button"
             onClick={SignIn}
-            to="/Blogger"
+            to="/Profile"
           >
             Sign In
           </Link>
@@ -53,14 +53,14 @@ function Home() {
           <p className="mb-6">or</p>
           <div className="flex justify-evenly  w-full text-white mb-6   border-b-2 border-gray-600 pb-6  ">
             <Link
-              to="/Blogger"
+              to="/Profile"
               onClick={signInWithGithub}
               className=" py-2 px-4 rounded Link shadow-md"
             >
               Github
             </Link>
             <Link
-              to="/Blogger"
+              to="/Profile"
               onClick={signInWithGoogle}
               className=" py-2 px-4 rounded Link shadow-md"
             >
