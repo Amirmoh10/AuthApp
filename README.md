@@ -1,7 +1,3 @@
-## App Live Demo
-
-Click on this [link](https://nostalgic-rosalind-c5bad9.netlify.app/) and test it. 
-
 ## Available Scripts
 
 In the project directory, you can run:
